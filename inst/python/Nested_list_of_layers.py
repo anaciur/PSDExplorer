@@ -59,10 +59,14 @@ class NestedList:
 
 
 n_l = NestedList([])
-n_l.create_nested_list_of_layers_selective1('scaffolds.tsv', 0)
+#n_l.create_nested_list_of_layers_selective1('scaffolds.tsv', 0)
+#import os
+#input_tsv = os.getenv("PSD_INPUT", "scaffolds.tsv")
+#n_l.create_nested_list_of_layers_selective1(input_tsv, 0)
+
 #n_l.create_nested_list_of_layers_selective1('scaffolds#.tsv', 1)
 #n_l.create_nested_list_of_layers_selective1('2nd_layer#.tsv', 1)
-n_l.create_nested_list_of_layers_selective1('scaffolds_2_layer_combined_interactions_within.tsv', 1)
+#(maybe)n_l.create_nested_list_of_layers_selective1('scaffolds_2_layer_combined_interactions_within.tsv', 1)
 #n_l.create_nested_list_of_layers_selective1('scaffolds#-1_2_layer_combined_interactions_within#.tsv', 1)
 for lst in n_l.nested_list:
     l = []
