@@ -1,0 +1,65 @@
+---
+title: "Exploring the Postsynaptic Density with PSDExplorer"
+author: "Ana Ciur"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exploring the Postsynaptic Density with PSDExplorer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(PSDExplorer)
+```
+  
+### **1. Introduction**
+The **PSDExplorer** package provides a reproducible interface to explore
+protein–protein interaction networks within the **postsynaptic density (PSD)**.
+It integrates an embedded Python engine (via `reticulate`) to iteratively build
+and visualize layered PSD networks starting from seed scaffold proteins.
+
+In this vignette, you’ll learn how to:
+1. Load PSD data from the included example file
+2. Generate a multi-layer PSD network
+3. Visualize the resulting HTML graph
+4. Perform simple network inspection in R
+
+---
+
+  ### **2. Quick Start**
+
+```{r}
+# Load example data (placeholder)
+psd_data <- loadPSD()
+head(psd_data)
+
+{r eval=FALSE}
+# Run the embedded Python engine (skipped during vignette build)
+output_html <- runPythonPSD(layers = 3, min_int = 2)
+browseURL(output_html)
+
+# Open the generated network
+browseURL(output_html)
+
+## Detect clusters and summarize
+# clusters <- detectClusters(psd_data)
+# summaryStats(clusters)
+#(not yet implemented)
+
+## Workflow Summary
+cat("
+  loadPSD() – Load and validate input data⃣
+  runPythonPSD() – Build the multi-layer network
+  detectClusters() – Identify modules
+  runGOenrichment() – Biological interpretation
+  plotPSDnetwork() – Interactive visualization
+")
+
+## Reproducibility
+sessionInfo()
+```

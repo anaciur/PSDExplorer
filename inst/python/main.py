@@ -10,6 +10,11 @@ from Nested_list_of_layers import NestedList
 from Visualize_Protein_Network import NetworkVisualizer, generate_random_color, rgb_to_hex
 from File_processor import InteractionProcessor
 
+# Allow R to override working directory
+WORK_DIR = os.getenv("PSD_WORKDIR", os.path.dirname(__file__))
+os.makedirs(WORK_DIR, exist_ok=True)
+print(f"[DEBUG] Working directory: {WORK_DIR}")
+
 # === Read parameters sent from R (via Sys.setenv) ===
 layers = int(os.getenv("PSD_LAYERS", 3))
 min_int = int(os.getenv("PSD_MIN_INT", 2))
@@ -135,25 +140,51 @@ def create_lst_from_nl(nl: list[list]):
 
 
 def Graph_Expansion_one_more_layer(i, s, min_int):
+    """Expands the PSD graph by one layer, verifying file creation."""
     last_list = [pr.name for pr in total_proteins_nested_list_selective[-1]]
     directory = os.path.join(BASE_DIR, f"directory{i}")
     os.makedirs(directory, exist_ok=True)
 
+    print(f"[DEBUG] Expanding to layer {i + 1} | Output dir: {directory}")
+
+    # Step 1: generate updated list of interactions
     a = List_Creator.Update_List_using_last_layer_interactions(
         last_list, BASE_DIR, extension, directory,
         f'up_to_layer_{i + 1}.tsv', n_l
     )
 
+    # Step 2: create combined interaction file
     Combined_file_creator.Create_combined_interactions_file(f'up_to_layer{i + 1}_cumulative', a)
-    extend_graph_selective(os.path.join(BASE_DIR, f'up_to_layer{i + 1}_cumulative.tsv'), s, graph1, min_int)
+
+    # Step 3: verify that expected file exists
+    expected_file = os.path.join(BASE_DIR, f'up_to_layer{i + 1}_cumulative.tsv')
+    print(f"[DEBUG] Expected file: {expected_file}")
+    print(f"[DEBUG] Exists after creation: {os.path.exists(expected_file)}")
+
+    # Step 4: if file missing, check alternative paths
+    if not os.path.exists(expected_file):
+        alt_path = os.path.join(directory, f'up_to_layer{i + 1}_cumulative.tsv')
+        print(f"[DEBUG] Checking fallback path: {alt_path}")
+        if os.path.exists(alt_path):
+            expected_file = alt_path
+        else:
+            print(f"⚠️ Skipped missing file for layer {i + 1}: {expected_file}")
+            return  # safely skip this layer instead of crashing
+
+    # Step 5: extend graph using the verified file
+    extend_graph_selective(expected_file, s, graph1, min_int)
 
 
 def make_n_layer_graph(in_size, n, min_int, input_tsv=input_tsv, out_html=out_html):
     """Main driver called by R through reticulate."""
     print("Building PSD network...")
 
-    # ✅ Use full path from R
-    input_path = input_tsv
+    # ✅ Ensure we’re using a valid absolute path for input_tsv
+    if not os.path.isabs(input_tsv):
+        input_path = os.path.join(BASE_DIR, input_tsv)
+    else:
+        input_path = input_tsv
+
     if not os.path.exists(input_path):
         raise FileNotFoundError(f"Input file not found: {input_path}")
 
@@ -178,16 +209,39 @@ def make_n_layer_graph(in_size, n, min_int, input_tsv=input_tsv, out_html=out_ht
     """)
 
     output_path = os.path.join(BASE_DIR, out_html)
+
+    # === Debug section ===
+    print(f"[DEBUG] Attempting to save HTML to: {os.path.abspath(output_path)}")
+    print(f"[DEBUG] BASE_DIR = {BASE_DIR}")
+    print(f"[DEBUG] Input file: {os.path.abspath(input_path)}")
+    print(f"[DEBUG] Graph 1: {len(graph.nodes)} nodes, {len(graph.edges)} edges")
+    print(f"[DEBUG] Graph 2: {len(graph1.nodes)} nodes, {len(graph1.edges)} edges")
+
+    # Try writing both graphs
     graph.show(output_path)
     graph1.show(output_path)
 
-    print(f"✅ Finished. Network saved to {output_path}")
-    return output_path
+    # Confirm result
+    exists = os.path.exists(output_path)
+    print(f"[DEBUG] File exists after write: {exists}")
+    print(f"✅ Finished. Network saved to {output_path if exists else '(not created!)'}")
 
+    return output_path
 
 def find_max_protein():
     max1 = max((len(pr.interactions) for pr in total_proteins), default=0)
     hubs = [pr.name for pr in total_proteins if len(pr.interactions) == max1]
     print("Hub proteins:", hubs)
     print("Max interactions:", max1)
+    
+# === Run automatically when called from R ===
+if __name__ == "__main__":
+    make_n_layer_graph(
+        in_size=20,
+        n=layers,
+        min_int=min_int,
+        input_tsv=input_tsv,
+        out_html=out_html
+    )
+
 
