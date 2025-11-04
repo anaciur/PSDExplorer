@@ -1,12 +1,35 @@
 Package: PSDExplorer
-Title: What the Package Does (One Line, Title Case)
+Title: Layer-Based Exploration of the Postsynaptic Density Network
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person(
+        given = "Ana",
+        family = "Ciur",
+        email = "ana.ciur@mail.utoronto.ca",
+        role = c("aut", "cre")
+    )
+Description: PSDExplorer is an R package that integrates R and Python for 
+    layer-based exploration of protein–protein interaction networks within 
+    the postsynaptic density (PSD). It enables users to visualize and expand 
+    multi-layer networks derived from scaffold protein interactions, identify 
+    hub proteins, perform GO enrichment, and detect functional clusters.
+    The package bridges computational network analysis with synaptic biology 
+    using a reproducible, modular design.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Imports: 
-    reticulate
+Imports:
+    reticulate,
+    igraph,
+    clusterProfiler,
+    visNetwork,
+    utils
+Suggests:
+    rmarkdown,
+    knitr,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Depends:
+    R (>= 4.3)
