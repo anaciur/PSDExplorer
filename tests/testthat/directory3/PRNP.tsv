@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+PRNP	APP	0	0	0	0	0	0	0	0	0	0	0.998
+PRNP	STIP1	0	0	0	0	0	0	0	0	0	0	0.997
+PRNP	NCAM1	0	0	0	0	0	0	0	0	0	0	0.995
+PRNP	FYN	0	0	0	0	0	0	0	0	0	0	0.99
+PRNP	CAV1	0	0	0	0	0	0	0	0	0	0	0.99
+PRNP	SNCA	0	0	0	0	0	0	0	0	0	0	0.984
+PRNP	HSPA5	0	0	0	0	0	0	0	0	0	0	0.954
+PRNP	PRND	0	0	0	0	0	0	0	0	0	0	0.953
+PRNP	GRM5	0	0	0	0	0	0	0	0	0	0	0.953
+PRNP	RPSA	0	0	0	0	0	0	0	0	0	0	0.94

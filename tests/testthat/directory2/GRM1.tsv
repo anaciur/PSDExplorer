@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+GRM1	GNAQ	0	0	0	0	0	0	0	0	0	0	0.998
+GRM1	HOMER1	0	0	0	0	0	0	0	0	0	0	0.998
+GRM1	HOMER3	0	0	0	0	0	0	0	0	0	0	0.99
+GRM1	HOMER2	0	0	0	0	0	0	0	0	0	0	0.989
+GRM1	GRM5	0	0	0	0	0	0	0	0	0	0	0.977
+GRM1	CAMK2A	0	0	0	0	0	0	0	0	0	0	0.968
+GRM1	SPTBN2	0	0	0	0	0	0	0	0	0	0	0.94
+GRM1	DLGAP1	0	0	0	0	0	0	0	0	0	0	0.938
+GRM1	CAMK2B	0	0	0	0	0	0	0	0	0	0	0.933
+GRM1	AGAP2	0	0	0	0	0	0	0	0	0	0	0.928

@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+GNAQ	S1PR3	0	0	0	0	0	0	0	0	0	0	0.999
+GNAQ	HRH1	0	0	0	0	0	0	0	0	0	0	0.999
+GNAQ	GRM5	0	0	0	0	0	0	0	0	0	0	0.999
+GNAQ	PLCB1	0	0	0	0	0	0	0	0	0	0	0.999
+GNAQ	PLCB3	0	0	0	0	0	0	0	0	0	0	0.999
+GNAQ	GRK2	0	0	0	0	0	0	0	0	0	0	0.999
+GNAQ	S1PR2	0	0	0	0	0	0	0	0	0	0	0.998
+GNAQ	GRM1	0	0	0	0	0	0	0	0	0	0	0.998
+GNAQ	ARHGEF25	0	0	0	0	0	0	0	0	0	0	0.997
+GNAQ	LPAR1	0	0	0	0	0	0	0	0	0	0	0.997

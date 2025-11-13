@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+CBLN1	GRID2	0	0	0	0	0	0	0	0	0	0	0.995
+CBLN1	NRXN1	0	0	0	0	0	0	0	0	0	0	0.994
+CBLN1	NRXN2	0	0	0	0	0	0	0	0	0	0	0.989
+CBLN1	GLUD1	0	0	0	0	0	0	0	0	0	0	0.835
+CBLN1	NXN	0	0	0	0	0	0	0	0	0	0	0.745
+CBLN1	LRRTM2	0	0	0	0	0	0	0	0	0	0	0.717
+CBLN1	OC90	0	0	0	0	0	0	0	0	0	0	0.678
+CBLN1	LRRTM1	0	0	0	0	0	0	0	0	0	0	0.648
+CBLN1	GABRA6	0	0	0	0	0	0	0	0	0	0	0.637
+CBLN1	NLGN1	0	0	0	0	0	0	0	0	0	0	0.611

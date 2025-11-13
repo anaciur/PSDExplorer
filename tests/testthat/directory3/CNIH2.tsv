@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+CNIH2	GRIA1	0	0	0	0	0	0	0	0	0	0	0.995
+CNIH2	GRIA2	0	0	0	0	0	0	0	0	0	0	0.99
+CNIH2	CACNG8	0	0	0	0	0	0	0	0	0	0	0.99
+CNIH2	GRIA3	0	0	0	0	0	0	0	0	0	0	0.97
+CNIH2	SHISA9	0	0	0	0	0	0	0	0	0	0	0.949
+CNIH2	GRIA4	0	0	0	0	0	0	0	0	0	0	0.94
+CNIH2	CACNG2	0	0	0	0	0	0	0	0	0	0	0.906
+CNIH2	CACNG7	0	0	0	0	0	0	0	0	0	0	0.896
+CNIH2	NT5C1A	0	0	0	0	0	0	0	0	0	0	0.878
+CNIH2	DLG4	0	0	0	0	0	0	0	0	0	0	0.856

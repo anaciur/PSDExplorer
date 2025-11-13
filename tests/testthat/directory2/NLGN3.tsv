@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+NLGN3	NRXN1	0	0	0	0	0	0	0	0	0	0	0.999
+NLGN3	NRXN2	0	0	0	0	0	0	0	0	0	0	0.999
+NLGN3	DLG4	0	0	0	0	0	0	0	0	0	0	0.995
+NLGN3	SHANK3	0	0	0	0	0	0	0	0	0	0	0.993
+NLGN3	SHANK2	0	0	0	0	0	0	0	0	0	0	0.958
+NLGN3	NRXN3	0	0	0	0	0	0	0	0	0	0	0.94
+NLGN3	CNTNAP2	0	0	0	0	0	0	0	0	0	0	0.913
+NLGN3	SHANK1	0	0	0	0	0	0	0	0	0	0	0.904
+NLGN3	PTPRD	0	0	0	0	0	0	0	0	0	0	0.902
+NLGN3	DLG3	0	0	0	0	0	0	0	0	0	0	0.885

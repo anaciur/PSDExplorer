@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+CALML4	RYR1	0	0	0	0	0	0	0	0	0	0	0.999
+CALML4	RYR2	0	0	0	0	0	0	0	0	0	0	0.999
+CALML4	CACNA1C	0	0	0	0	0	0	0	0	0	0	0.999
+CALML4	NOS3	0	0	0	0	0	0	0	0	0	0	0.999
+CALML4	CAMK2A	0	0	0	0	0	0	0	0	0	0	0.999
+CALML4	NOS1	0	0	0	0	0	0	0	0	0	0	0.999
+CALML4	CAMK4	0	0	0	0	0	0	0	0	0	0	0.998
+CALML4	KRAS	0	0	0	0	0	0	0	0	0	0	0.998
+CALML4	MYLK2	0	0	0	0	0	0	0	0	0	0	0.997
+CALML4	CAMKK2	0	0	0	0	0	0	0	0	0	0	0.997

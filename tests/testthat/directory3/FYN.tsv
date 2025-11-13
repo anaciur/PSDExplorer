@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+FYN	SRC	0	0	0	0	0	0	0	0	0	0	0.999
+FYN	SH2D1A	0	0	0	0	0	0	0	0	0	0	0.999
+FYN	LCK	0	0	0	0	0	0	0	0	0	0	0.998
+FYN	PTK2	0	0	0	0	0	0	0	0	0	0	0.998
+FYN	CBL	0	0	0	0	0	0	0	0	0	0	0.998
+FYN	CAV1	0	0	0	0	0	0	0	0	0	0	0.997
+FYN	LYN	0	0	0	0	0	0	0	0	0	0	0.996
+FYN	GP6	0	0	0	0	0	0	0	0	0	0	0.996
+FYN	DLG4	0	0	0	0	0	0	0	0	0	0	0.996
+FYN	SHC1	0	0	0	0	0	0	0	0	0	0	0.995

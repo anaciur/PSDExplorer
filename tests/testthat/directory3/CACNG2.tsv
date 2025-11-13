@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+CACNG2	DLG4	0	0	0	0	0	0	0	0	0	0	0.999
+CACNG2	GRIA1	0	0	0	0	0	0	0	0	0	0	0.999
+CACNG2	GRIA2	0	0	0	0	0	0	0	0	0	0	0.995
+CACNG2	GRIA3	0	0	0	0	0	0	0	0	0	0	0.984
+CACNG2	GRIA4	0	0	0	0	0	0	0	0	0	0	0.975
+CACNG2	SHISA9	0	0	0	0	0	0	0	0	0	0	0.973
+CACNG2	CACNG1	0	0	0	0	0	0	0	0	0	0	0.962
+CACNG2	CACNB4	0	0	0	0	0	0	0	0	0	0	0.951
+CACNG2	DLG1	0	0	0	0	0	0	0	0	0	0	0.941
+CACNG2	ADAM22	0	0	0	0	0	0	0	0	0	0	0.937

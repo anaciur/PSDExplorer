@@ -1,0 +1,11 @@
+#node1	node2	node1_string_id	node2_string_id	neighborhood_on_chromosome	gene_fusion	phylogenetic_cooccurrence	homology	coexpression	experimentally_determined_interaction	database_annotated	automated_textmining	combined_score
+DAG1	UTRN	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	LAMA2	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	AGRN	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	DMD	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	SGCA	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	HSPG2	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	SGCD	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	SSPN	0	0	0	0	0	0	0	0	0	0	0.999
+DAG1	NRXN1	0	0	0	0	0	0	0	0	0	0	0.998
+DAG1	NRXN2	0	0	0	0	0	0	0	0	0	0	0.997

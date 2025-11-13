@@ -1,76 +1,84 @@
 #!/usr/bin/env python3
-
-##################################################################
-## For the given list of proteins print out only the interactions
-## between these protein which have medium or higher confidence
-## experimental score
-##
-## Requires requests module:
-## type "python -m pip install requests" in command line (win)
-## or terminal (mac/linux) to install the module
-##################################################################
-
-import requests  ## python -m pip install requests
-
+import requests
+from pathlib import Path
 from get_files1 import create_file_if_not_exists
-#from main import n_l
 
-#my_genes = n_l.nested_list[0]
+# Folder where this file lives (your package's python dir)
+BASE_DIR = Path(__file__).resolve().parent
+
+
+def _deep_flatten_to_str(x):
+    """
+    Recursively flatten *anything* (lists/tuples of lists/tuples/strings)
+    and return a flat list of strings.
+    """
+    flat = []
+    if isinstance(x, (list, tuple, set)):
+        for item in x:
+            flat.extend(_deep_flatten_to_str(item))
+    else:
+        # force to string so join() never sees a non-string
+        flat.append(str(x))
+    return flat
 
 
 def Create_combined_interactions_file(up_to_layer_i, my_genes):
+    """
+    Given a protein list (possibly nested), fetch STRING interactions and
+    write them to <BASE_DIR>/<up_to_layer_i>.tsv
+    """
+    # 1) make sure it's flat strings
+    flat_genes = _deep_flatten_to_str(my_genes)
+    print(f"[DEBUG] Create_combined_interactions_file got genes: {flat_genes}")
+
+    # 2) if nothing to query, just create an empty file and return
+    if not flat_genes:
+        output_path = BASE_DIR / f"{up_to_layer_i}.tsv"
+        create_file_if_not_exists(output_path)
+        print(f"[INFO] Gene list was empty, created empty file at: {output_path}")
+        return output_path
+
+    # 3) build request to STRING
     string_api_url = "https://string-db.org/api"
     output_format = "tsv-no-header"
     method = "network"
-
-    ##
-    ## Construct URL
-    ##
-
     request_url = "/".join([string_api_url, output_format, method])
 
-    ##
-    ## Set parameters
-    ##
-
     params = {
-
-        "identifiers": "%0d".join(my_genes),  # your protein
-        "species": 9606,  # species NCBI identifier
-        "caller_identity": "www.awesome_app.org"  # your app name
-
+        # this is now guaranteed to be a list of strings
+        "identifiers": "%0d".join(flat_genes),
+        "species": 9606,          # human
+        "caller_identity": "PSDExplorer",
     }
 
-    ##
-    ## Call STRING
-    ##
+    # 4) prepare output
+    #output_path = BASE_DIR / f"{up_to_layer_i}.tsv"
+    output_path = Path.cwd() / f"{up_to_layer_i}.tsv"
+    create_file_if_not_exists(output_path)
+    print(f"[INFO] Writing interactions to: {output_path}")
 
-    response = requests.post(request_url, data=params)
+    # 5) call STRING
+    try:
+        resp = requests.post(request_url, data=params)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"[ERROR] STRING request failed: {e}")
+        return output_path
 
-    for line in response.text.strip().split("\n"):
+    # 6) write results
+    for line in resp.text.strip().split("\n"):
+        parts = line.strip().split("\t")
+        if len(parts) >= 6:
+            query_name = parts[2]
+            partner_name = parts[3]
+            combined_score = parts[5]
 
-        l = line.strip().split("\t")
-        if len(l) >= 6:
-            query_ensp = l[0]
-            query_name = l[2]
-            partner_ensp = l[1]
-            partner_name = l[3]
-            combined_score = l[5]
-            file_path = f"{up_to_layer_i}.tsv"
+            with open(output_path, "a", encoding="utf-8") as f:
+                # match your previous format: 2 ids, 10 zeros, score
+                row = "\t".join(
+                    [query_name, partner_name] + ["0"] * 10 + [combined_score]
+                )
+                f.write(row + "\n")
 
-            # Create the file if it does not exist
-            create_file_if_not_exists(file_path)
-
-            with open(file_path, 'a') as new_file:
-                # output_string = "\t".join([query_name, partner_name + " " + "0\t" * 9 + "0", combined_score])
-                output_string = "\t".join([query_name, partner_name] + ["0"] * 10 + [combined_score])
-
-                # Write the result to the file
-                new_file.write(output_string + "\n")
-
-            #print("\t".join([query_name, partner_name, combined_score]))
-
-
-
-
-#Create_combined_interactions_file('up_to_layer_none', my_genes)
+    print(f"[INFO] ✅ Wrote combined file: {output_path}")
+    return output_path
